@@ -14,10 +14,10 @@ class ProductImageSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 1; $i < 5; $i++) {
+        for($i = 5; $i < 11; $i++) {
             DB::table('product_images')->insert([
-                'img' => 'details_' . $i . '.jpg',
-                'product_id' => 1
+                'img' => 'product_' . $i . '.jpg',
+                'product_id' => $i
             ]);
         }
     }
