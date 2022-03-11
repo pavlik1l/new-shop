@@ -41,7 +41,7 @@ $(document).ready(function()
 
 	initSearch();
 	initMenu();
-	initIsotope();
+	// initIsotope();
 
 	/* 
 
