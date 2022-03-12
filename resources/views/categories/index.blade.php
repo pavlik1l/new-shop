@@ -128,14 +128,7 @@
 						@endforeach
 
 					</div>
-					<div class="product_pagination">
-						<ul>
-							<li class="active"><a href="#">01.</a></li>
-							<li><a href="#">02.</a></li>
-							<li><a href="#">03.</a></li>
-						</ul>
-					</div>
-						
+					{{$products->links('pagination.index')}}
 				</div>
 			</div>
 		</div>
