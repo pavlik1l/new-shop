@@ -6,6 +6,33 @@
 @endsection
 
 @section('custom_js')
+	<script>
+		$(document).ready(function() {
+			$('.cart_button a').click(function(e) {
+				e.preventDefault();
+				let id = $(this).data('id');
+				let qty = $('.quantity_input').val();
+				addToCart(id, qty);
+			});
+		});
+
+		function addToCart(id, qty) {
+			$.ajax({
+				url: "{{route('addToCart')}}",
+				type: 'POST',
+				data: {
+					id: id,
+					qty: qty
+				},
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+				success: (data) => {
+					console.log(data);
+				}
+			});
+		}
+	</script>
     <script src="/js/product.js"></script>
 @endsection
 
@@ -96,7 +123,7 @@
 									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
 								</div>
 							</div>
-							<div class="button cart_button"><a href="#">Add to cart</a></div>
+							<div class="button cart_button"><a href="#" data-id="{{$item->id}}">Add to cart</a></div>
 						</div>
 
 						<!-- Share -->

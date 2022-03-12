@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,5 +16,7 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/{cat}/{product_id}', [ProductController::class, 'show'])->name('showProduct');
-Route::get('/{cat}', [ProductController::class, 'showCategory'])->name('showCategory');
+Route::get('/cart', [CartController::class, 'index'])->name('showCart');
+Route::get('/product/{cat}/{product_id}', [ProductController::class, 'show'])->name('showProduct');
+Route::get('/category/{cat}', [ProductController::class, 'showCategory'])->name('showCategory');
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('addToCart');

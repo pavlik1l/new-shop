@@ -18,7 +18,7 @@ class ProductController extends Controller
 
     public function showCategory(Request $request, $cat_alias) {
         $cat = Category::where('alias', $cat_alias)->first();
-        $paginate = 1;
+        $paginate = 4;
         if(isset($request->orderBy)) {
             if($request->orderBy == 'price-low-high') {
                 $products = Product::where('category_id', $cat->id)->orderBy('price', 'asc')->paginate($paginate);
